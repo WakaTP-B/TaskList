@@ -220,6 +220,67 @@ body.show footer a {
 body.show footer a:hover {
     text-decoration: underline;
 }
+/* Page inscription */
+body.inscription {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 3rem;
+    background-color: #f4f6f8;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body.inscription h1 {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+}
+
+body.inscription form {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 90%;
+    max-width: 400px;
+}
+
+body.inscription input[type="text"],
+body.inscription input[type="password"] {
+    padding: 0.7rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    width: 100%;
+}
+
+body.inscription button {
+    padding: 0.7rem;
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+body.inscription button:hover {
+    background-color: #357abd;
+}
+
+body.inscription a {
+    margin-top: 1rem;
+    color: #4a90e2;
+    text-decoration: none;
+    font-size: 0.95rem;
+}
+
+body.inscription a:hover {
+    text-decoration: underline;
+}
 
 
 /* Page validate-task (historique) */
