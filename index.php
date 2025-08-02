@@ -1,28 +1,61 @@
 <?php
-require_once "bdd-crud.php";
-// TODO Redirection vers la page de connexion si l'utilisateur n'est pas connecté
+session_start();
 
-// TODO Afficher la liste des tâches de l'utilisateur connecté
+require_once "bdd-crud.php";
+
+if (isset($_SESSION["id"])) {
+    $userID = $_SESSION["id"];
+    $username = $_SESSION["username"];
+} 
+else {
+    header("Location: login.php");
+}
+
+$tasks = get_tasks_user($userID);
+
+
+// echo '<pre> $_SESSION = ';
+// print_r($_SESSION);
+// echo '<pre> $tasks = ';
+// print_r($tasks);
+// echo '</pre>';
 
 ?>
 
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Voir les taches</title>
+    <link rel="stylesheet" href="style.css">
+    <title>TaskList</title>
 </head>
-<body>
+
+<body class="index">
     <header>
-        <a href="login.php">Login</a>
-        <a href="logout.php">Logout</a>
-        <a href="inscription.php">Se créer un compte</a>
+        <a class="logout" href="logout.php">Logout</a>
+        <!-- <a href="inscription.php">Se créer un compte</a>
+        <a href="login.php">Login</a> -->
     </header>
-    <h1>Liste des tâches</h1>
-    <div class="tasks"> 
-        <!-- TODO Afficher la liste des tâches de l'utilisateur connecté -->
+<h1>Bienvenue <?= $username ?></h1>
+    <h2>Liste des tâches</h2>
+    <div class="tasks">
+        <ul>
+            <?php foreach ($tasks as $task): ?>
+                <li><?= $task['title'] ?>
+                    <a href="show-task.php?taskID=<?= $task['id'] ?>">Description</a>
+                    <a href="validate-task.php?taskID=<?= $task['id'] ?>">Terminer</a>
+                    <a href="delete-task.php?taskID=<?= $task['id'] ?>">Supprimer</a>
+                </li>
+            <?php endforeach ?>
+        </ul>
+    </div>
+
+    <div>
+        <a href="add-task.php">Ajouter une tâche</a>
 
     </div>
 </body>
+
 </html>

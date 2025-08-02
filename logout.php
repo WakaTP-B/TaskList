@@ -1,5 +1,10 @@
 <?php
-// TODO Destruction de la session pour déconnecter l'utilisateur et redirection vers la page de connexion
+session_start();
+
+if (isset($_SESSION["id"])) {
+        session_destroy();
+        header("Location: index.php");
+    }
 
 
 ?>

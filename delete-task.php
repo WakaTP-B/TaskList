@@ -1,7 +1,13 @@
 <?php
+session_start();
 require_once "bdd-crud.php";
 
-// TODO Suppréssion d'une tâche en fonction de son ID passé en $_GET
+if (isset($_GET['taskID'])) {
+    $taskID = $_GET['taskID'];
+    delete_task($taskID);
+    header("Location: index.php");
+}
+
 
 
 ?>
